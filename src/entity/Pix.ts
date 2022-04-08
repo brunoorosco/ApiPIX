@@ -1,39 +1,31 @@
-import { join } from 'path/posix'
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    JoinColumn, OneToOne, Column,
-    ManyToOne,
-    UpdateDateColumn,
-    CreateDateColumn
-} from 'typeorm'
-import { User } from './User'
+import {Entity, PrimaryGeneratedColumn, JoinColumn, Column, CreateDateColumn,ManyToOne, UpdateDateColumn} from "typeorm";
 
-@Entity()  //decorator
+import { User } from './User';
 
+@Entity()
 export class Pix {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id: string;
 
     @Column()
-    status: string
+    status: string;
 
-    @ManyToOne(()=> User, user => user.id)
+    @ManyToOne(() => User, user => user.id)
     @JoinColumn()
-    requestingUser: User
+    requestingUser: User;
 
-    @ManyToOne(()=> User, user => user.id, {nullable: true})
+    @ManyToOne(() => User, user => user.id, {nullable: true})
     @JoinColumn()
-    payingUser: User
+    payingUser: User;
     
     @Column()
-    value: number
+    value: number;
 
     @CreateDateColumn()
-    createdAt: Date
+    createdAt: Date;
 
     @UpdateDateColumn()
-    updatedAt: Date
+    updatedAt: Date;
 
 }

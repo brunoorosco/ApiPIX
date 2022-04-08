@@ -1,26 +1,21 @@
-import 'express-async-errors'
-import express from "express"
-import { createConnection } from "typeorm"
-import cors from 'cors'
+import "reflect-metadata";
+import {createConnection} from "typeorm";
+import {User} from "./entity/User";
 
-import routes from "./routes";
-import { globalErrors } from "./middlewares/globalErros";
+createConnection().then(async connection => {
 
-createConnection().then(connection => {
+    console.log("Inserting a new user into the database...");
+    const user = new User();
+    user.firstName = "Timber";
+    user.lastName = "Saw";
+    user.age = 25;
+    await connection.manager.save(user);
+    console.log("Saved a new user with id: " + user.id);
 
-    const app = express()
-    const PORT = 3333
+    console.log("Loading users from the database...");
+    const users = await connection.manager.find(User);
+    console.log("Loaded users: ", users);
 
-    app.use(cors())
-    app.use(express.json())
-    app.use(routes)
+    console.log("Here you can setup and run express/koa/any other framework.");
 
-    app.use(globalErrors)
-
-    app.listen(PORT, () => {
-        console.log(`>> [server] = Server is running at http://localhost:${PORT}`)
-    })
-
-}).catch((error) => {
-    console.log("unable to connect to the database", error)
-})
+}).catch(error => console.log(error));

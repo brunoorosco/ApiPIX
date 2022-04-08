@@ -1,20 +1,12 @@
 {
-    "name":"default",
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "orosco0329",
-    "database": "inter",
-    "synchronize": true,
-    "logging": false,
-    "entities": [
-       "src/entity/*.ts"
-    ],
-    "migrations": [
-       "src/migration/*.ts"
-    ],
-    "subscribers": [
-       "src/subscriber/*.ts"
-    ]
+   "name":"default",
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "postgres",
+   "password": "123456",
+   "database": "banco",
+   "entities": ["src/entity/*.ts"],
+   "logging": false,
+   "synchronize": true
  }
