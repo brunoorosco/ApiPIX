@@ -4,7 +4,7 @@ import UserService from "./user.service";
 
 export class UserController {
 
-    async signin(req: Request, res: Response) {
+    async signin(req:Request, res:Response) {
 
         const { email, password } = req.body
 

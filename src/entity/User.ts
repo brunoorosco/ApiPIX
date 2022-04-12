@@ -1,28 +1,36 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    JoinColumn, OneToOne, Column,
+    ManyToOne,
+} from 'typeorm'
 
-@Entity() //decorator
+@Entity()  //decorator
+
 export class User {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
 
-  @Column()
-  firstName: string;
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
-  @Column()
-  lastName: string;
+    @Column()
+    firstName: string
+    
+    @Column()
+    lastName: string
+    
+    @Column()
+    accountNumber: number
+    
+    @Column()
+    accountDigit: number
+   
+    @Column()
+    wallet: number
 
-  @Column()
-  accountNumber: number ;
+    @Column()
+    email: string
 
-  @Column()
-  accountDigit: number;
+    @Column()
+    password: string
 
-  @Column()
-  wallet: number;
-
-  @Column()
-  email: string;
-
-  @Column()
-  password: string;
 }

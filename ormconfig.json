@@ -3,10 +3,18 @@
    "type": "postgres",
    "host": "localhost",
    "port": 5432,
-   "username": "postgres",
+   "username": "admin",
    "password": "123456",
    "database": "banco",
-   "entities": ["src/entity/*.ts"],
+   "synchronize": true,
    "logging": false,
-   "synchronize": true
- }
+   "entities": [
+      "src/entity/*.ts"
+   ],
+   "migrations": [
+      "src/migration/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/*.ts"
+   ]
+}
